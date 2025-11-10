@@ -2,7 +2,7 @@
 <div id= "comp-list-one">
 <h1> Book list one</h1>
 <ul>
-<li class="item" v-for = "product in productList" :key="product.id">
+<li class="item" v-for = "product in productListsale" :key="product.id">
 <span class="author"> <b>Author:</b> {{product.author}} </span> <br>
 <span class="book"> <b>Book:</b> {{product.book}} </span> <br>
 <span class="goodreads"> <b>Goodreads:</b> {{product.goodreads}} </span> <br>
@@ -14,12 +14,13 @@
 <script>
 export default {
 name: "ProductCompoOne",
-props: ["productList"],
 data: function() {
 return {
-
 }},
 computed: {
+    productListsale(){
+        return this.$store.getters.productListsale
+    },
 }
 }
 </script>
