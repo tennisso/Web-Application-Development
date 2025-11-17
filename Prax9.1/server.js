@@ -4,6 +4,11 @@ const app = express();
 // listen for requests on port 3000
 app.listen(3000);
 
+app.use((req, res, next) => {
+ console.log('a new request was made to the server');
+ next();
+});
+
 /* app.get() is used to respond to Get requests, and it takes two arguments: 
 1- arg1: represents what path/url you want to listen to (e.g., '/' listens to index path)
 2- arg2: represents a function that takes in request and response objects */
@@ -22,6 +27,10 @@ app.get('/', (req, res) => {
 // do not write in the URL address bar the extension of the page. For example, writing (http://localhost:3000/posts.html) will direct you to the 404 page
 app.get('/posts', (req, res) => {
     res.sendFile('./views/posts.html', { root: __dirname });
+});
+
+app.get('/contactus', (req, res) => {
+    res.sendFile('./views/contactus.html', { root: __dirname });
 });
 
 
